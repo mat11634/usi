@@ -10,7 +10,13 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('/', array('as' => 'home', 'uses' => 'HomeController@index'));
-Route::get('doctor/{id?}', array('as' => 'doctor.get', 'uses' => 'DoctorController@show'));
 
+/* To co jest po @ to jest "zapytanie" w klasie czyli tym co przed @. Nie może być 2-óch takich samych
+ * zapytań w jednej klasie.
+ * */
+ 
+Route::get('/', array('as' => 'home', 'uses' => 'HomeController@index'));
+Route::get('doctor', array('as' => 'Read_Doctors', 'uses' => 'DoctorController@show')); //wszystkie doktory
+Route::get('doctor/{id}', array('as' => 'Read_Doctor', 'uses' => 'DoctorController@get')); //doktor z parametrem
+Route::get('doctor/{id}/appointment', array('as' => 'Read_Doctor_Appointments', 'uses' => 'DoctorController@getappointments'));
 
